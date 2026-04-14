@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Fuente Serif para títulos (etéreos y elegantes) */
+  --font-serif: "Cormorant Garamond", serif;
+
+  /* Fuente Sans para información técnica o botones */
+  --font-sans: "Montserrat", sans-serif;
+
+  /* Espaciado de letras muy amplio para ese look cinematográfico */
+  --tracking-widest: 0.5em;
+  --tracking-loose: 0.2em;
+
+  /* Colores base inspirados en el inicio del juego (Escala de grises) */
+  --color-gris-dark: #1a1a1a;
+  --color-gris-light: #f5f5f5;
+}
+
+body {
+  @apply bg-[#050505] text-white font-sans antialiased;
+}

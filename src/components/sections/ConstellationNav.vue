@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { nodes } from '../../data/navigation';
 import gsap from 'gsap';
 
 const activeNode = ref(null);
+const router = useRouter();
 
 onMounted(() => {
   // Animación de entrada para las líneas de la constelación
@@ -38,6 +40,12 @@ const leaveStar = (el) => {
 
 const selectNode = (node) => {
   activeNode.value = node;
+};
+
+const navigateToSection = (nodeId) => {
+  // Cerramos el modal antes de irnos para que no estorbe al volver
+  activeNode.value = null;
+  router.push({ name: nodeId });
 };
 </script>
 
@@ -107,17 +115,24 @@ const selectNode = (node) => {
 
     <Transition name="fade">
       <div v-if="activeNode" class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md z-20 px-10">
-        <div class="relative group max-w-2xl">
-          <img :src="activeNode.image" class="w-full rounded-sm border border-white/10" />
+
+        <div
+          @click="navigateToSection(activeNode.id)"
+          class="relative group max-w-2xl"
+        >
+          <img
+            :src="activeNode.image"
+            class="relative z-10 w-full rounded-[28px] border border-white/20 shadow-[0_0_100px_rgba(255,255,255,0.5)] group-hover:shadow-[0_0_150px_rgba(255,255,255,0.8)] transition-all duration-700"
+          />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
         </div>
 
-        <h2 class="mt-8 text-white font-serif text-4xl tracking-[0.6em] uppercase">{{ activeNode.name }}</h2>
-        <p class="mt-4 text-white/40 text-xs tracking-[0.3em] uppercase max-w-md text-center leading-loose">
+        <h2 class="mt-8 text-white font-serif text-4xl tracking-[0.1em] uppercase">{{ activeNode.name }}</h2>
+        <p class="mt-4 text-white/40 text-sm tracking-[0.1em] uppercase max-w-xl text-center leading-loose">
           {{ activeNode.subtitle || 'Explora este fragmento del universo' }}
         </p>
 
-        <button @click="activeNode = null" class="mt-12 group flex flex-col items-center cursor-pointer">
+        <button @click="activeNode = null" class="mt-6 group flex flex-col items-center cursor-pointer">
           <span class="text-white/30 group-hover:text-white text-[10px] tracking-[0.4em] uppercase transition-colors">Volver</span>
           <div class="w-[1px] h-8 bg-white/20 group-hover:bg-white mt-2 transition-all"></div>
         </button>

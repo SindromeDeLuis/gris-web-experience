@@ -8,7 +8,32 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    }
+    },
+    {
+      path: '/historia',
+      name: 'historia',
+      component: () => import('../views/HistoryView.vue')
+    },
+    {
+      path: '/arte',
+      name: 'arte',
+      component: () => import('../views/ArtView.vue')
+    },
+    {
+      path: '/musica',
+      name: 'musica',
+      component: () => import('../views/MusicView.vue')
+    },
+    {
+      path: '/gameplay',
+      name: 'gameplay',
+      component: () => import('../views/GameplayView.vue')
+    },
+    {
+      path: '/tiendas',
+      name: 'tiendas',
+      component: () => import('../views/StoresView.vue')
+    },
   ],
 
   scrollBehavior(to, from, savedPosition) {

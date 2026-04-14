@@ -5,7 +5,7 @@ export const nodes = [
     subtitle: 'Reconstruyendo un mundo roto a través del color',
     x: 80,
     y: 200,
-    image: '/images/historia-preview.webp',
+    image: '/images/navigation/historia-preview.png',
   },
   {
     id: 'arte',
@@ -13,7 +13,7 @@ export const nodes = [
     subtitle: 'El lienzo que cobra vida',
     x: 250,
     y: 150,
-    image: '/images/arte-preview.webp',
+    image: '/images/navigation/arte-preview.png',
   },
   {
     id: 'musica',
@@ -21,7 +21,7 @@ export const nodes = [
     subtitle: 'Melodías que acompañan a Gris',
     x: 450,
     y: 180,
-    image: '/images/musica-preview.webp',
+    image: '/images/navigation/musica-preview.png',
   },
   {
     id: 'gameplay',
@@ -29,14 +29,14 @@ export const nodes = [
     subtitle: 'Un viaje emocional sin palabras',
     x: 650,
     y: 120,
-    image: '/images/gameplay-preview.webp',
+    image: '/images/navigation/gameplay-preview.png',
   },
   {
-    id: 'tienda',
+    id: 'tiendas',
     name: 'TIENDAS',
     subtitle: '¡Adquiere GRIS!',
     x: 900,
     y: 270,
-    image: '/images/tienda-preview.webp',
+    image: '/images/navigation/tienda-preview.png',
   },
 ]

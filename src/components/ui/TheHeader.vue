@@ -27,13 +27,16 @@ const platforms = [
       isScrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent'
     ]"
   >
-    <div class="flex-1 flex items-center gap-3">
+    <router-link
+      to="/"
+      class="flex-1 flex items-center gap-3"
+    >
       <img src="/images/icons/Nomada-Symbol.png" alt="" class="w-10 h-10" />
       <div class="flex flex-col">
         <span class="font-serif text-lg tracking-[0.4em] uppercase leading-none">Nomada</span>
         <span class="text-[8px] tracking-[0.5em] text-white/50 uppercase mt-1">Studio</span>
       </div>
-    </div>
+    </router-link>
 
 
       <nav class="hidden xl:flex items-center gap-3 flex-1 justify-center">

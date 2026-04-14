@@ -34,14 +34,14 @@ const scrollToRecorrido = () => {
 </script>
 
 <template>
-  <section class="relative h-screen w-full flex flex-col items-center justify-center bg-[#050505] overflow-hidden">
-    <div class="absolute inset-0 z-0 opacity-40">
+  <section class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <!--<div class="absolute inset-0 z-0 opacity-40">
       <img
         src="/images/hero-bg.webp"
         alt="GRIS Background"
         class="w-full h-full object-cover"
       />
-    </div>
+    </div>-->
 
     <div class="relative z-10 text-center px-4">
 

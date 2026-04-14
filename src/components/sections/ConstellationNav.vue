@@ -42,7 +42,7 @@ const selectNode = (node) => {
 </script>
 
 <template>
-  <div class="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden">
+  <div class="relative w-full h-screen flex items-center justify-center overflow-hidden">
 
     <svg class="absolute invisible">
       <defs>
@@ -58,7 +58,7 @@ const selectNode = (node) => {
 
     <svg viewBox="0 0 1000 400" class="w-full max-w-5xl z-10 drop-shadow-2xl">
       <polyline
-        points="100,200 250,150 450,180 650,120 800,220"
+        points="80,200 150,250 250,150 450,180 650,120 900,270"
         fill="none"
         stroke="white"
         stroke-width="3"

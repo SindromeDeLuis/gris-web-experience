@@ -6,13 +6,13 @@ onMounted(() => {
   const tl = gsap.timeline();
 
   // Animación de entrada: El título aparece con un ligero desenfoque y escala
-  tl.from(".hero-title", {
+  tl/*.from(".hero-title", {
     opacity: 0,
     filter: "blur(20px)",
     scale: 1.1,
     duration: 2.5,
     ease: "power2.out"
-  })
+  })*/
   .from(".hero-subtitle", {
     opacity: 0,
     y: 20,

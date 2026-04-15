@@ -1,120 +1,142 @@
 <template>
-  <section class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+  <section class="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center">
 
     <div class="absolute inset-0 z-0">
-      <img src="/images/music-bg.png" class="w-full h-full object-cover will-change-transform" alt="Music Background" />
+      <img src="/images/music-bg.png" alt="Arte Detallado del Bosque y Cascada (Gris)"
+        class="w-full h-full object-cover transition-transform duration-600 will-change-transform" />
     </div>
 
-    <div class="absolute inset-0 -z-10 pointer-events-none">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full animate-pulse"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/10 blur-[120px] rounded-full animate-pulse"
-        style="animation-delay: 2s"></div>
-    </div>
-
-    <div class="relative z-10 w-full max-w-4xl px-6">
-
-      <div
-        class="music-card relative overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.02] p-12 shadow-2xl">
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-          <div class="relative aspect-square rounded-2xl overflow-hidden group">
-            <img :src="currentTrack.cover"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
-              <svg class="w-32 h-32 -rotate-90">
-                <circle cx="64" cy="64" r="60" stroke="white" stroke-width="1" fill="transparent" class="opacity-10" />
-                <circle cx="64" cy="64" r="60" stroke="white" stroke-width="2" fill="transparent" stroke-dasharray="377"
-                  :stroke-dashoffset="377 - (377 * progress / 100)" class="transition-all duration-300" />
-              </svg>
-            </div>
-          </div>
-
-          <div class="flex flex-col space-y-8">
-            <div>
-              <h2 class="text-white text-3xl font-serif tracking-widest uppercase mb-2">{{ currentTrack.title }}</h2>
-              <p class="text-white/40 text-xs tracking-[0.4em] uppercase">Berlinist • Original Soundtrack</p>
-            </div>
-
-            <div class="space-y-2">
-              <div class="h-[1px] w-full bg-white/10 relative">
-                <div class="absolute h-full bg-white transition-all duration-300" :style="{ width: progress + '%' }">
-                </div>
-              </div>
-              <div class="flex justify-between text-[10px] text-white/30 tracking-widest">
-                <span>02:14</span>
-                <span>04:30</span>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between px-4">
-              <button class="text-white/40 hover:text-white transition-colors">
-                <span class="material-icons-outlined text-xl">shuffle</span>
-              </button>
-              <div class="flex items-center gap-8">
-                <button class="text-white hover:scale-110 transition-transform">
-                  <span class="material-icons text-2xl">skip_previous</span>
-                </button>
-                <button
-                  class="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all">
-                  <span class="material-icons text-3xl">play_arrow</span>
-                </button>
-                <button class="text-white hover:scale-110 transition-transform">
-                  <span class="material-icons text-2xl">skip_next</span>
-                </button>
-              </div>
-              <button class="text-white/40 hover:text-white transition-colors">
-                <span class="material-icons-outlined text-xl">repeat</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="mt-12 pt-8 border-t border-white/5">
-          <div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar">
-            <button v-for="track in tracks" :key="track.id"
-              class="flex-shrink-0 text-[10px] tracking-[0.3em] uppercase transition-colors"
-              :class="track.id === currentTrack.id ? 'text-white' : 'text-white/20 hover:text-white/50'">
-              {{ track.title }}
-            </button>
-          </div>
-        </div>
-
+    <div class="absolute inset-0 flex items-center justify-center z-10">
+      <div class="text-center translate-y-12">
+        <p
+          class="text-white text-6xl md:text-7xl font-sans font-bold leading-none tracking-tighter uppercase mb-6 opacity-60">
+          sonoro
+        </p>
       </div>
-
     </div>
+
+    <div class="absolute inset-0 z-20 overflow-hidden pointer-events-none">
+      <img src="/images/music-bg2.png"
+        class="w-full h-full object-cover transition-transform duration-600 will-change-transform" id="parallax-bg-2" />
+    </div>
+
+    <div class="absolute top-24 left-16 z-20">
+      <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium">
+        Pasa el cursor por las cascadas para crear melodías
+      </p>
+    </div>
+
+    <div class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+      <div class="text-center">
+        <p class="text-white text-6xl md:text-7xl font-sans font-bold leading-none tracking-tighter uppercase mb-6">
+          Un paisaje
+        </p>
+      </div>
+    </div>
+
+    <div class="absolute bottom-16 left-1/2 -translate-x-1/2 z-20">
+      <a href="https://open.spotify.com/album/2YMWspDGtbDgYULXvVQFM6" target="_blank"
+        class="inline-flex items-center gap-4 bg-white/70 backdrop-blur-md px-10 py-3 rounded-full border border-white/20 transition-all duration-300 hover:bg-[#1DB954] hover:scale-105 shadow-xl group">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/1999/xlink"
+          class="fill-black group-hover:fill-white transition-colors">
+          <path
+            d="M12,0C5.37,0,0,5.37,0,12c0,6.63,5.37,12,12,12c6.63,0,12-5.37,12-12C24,5.37,18.63,0,12,0z M17.48,17.29c-0.22,0.36-0.69,0.48-1.06,0.26 c-2.83-1.73-6.39-2.13-10.59-1.17c-0.42,0.1-0.84-0.16-0.93-0.58C4.81,15.39,5.07,14.97,5.49,14.88c4.61-1.06,8.54-0.61,11.73,1.35 C17.59,16.45,17.71,16.92,17.48,17.29z M18.91,14.16c-0.28,0.46-0.88,0.61-1.34,0.33c-3.23-1.99-8.17-2.58-12-1.42 c-0.53,0.16-1.08-0.14-1.24-0.67c-0.16-0.53,0.14-1.08,0.67-1.24c4.37-1.33,9.81-0.66,13.59,1.66 C19.06,13.08,19.21,13.68,18.91,14.16z M19.04,11.16C15.18,8.87,8.79,8.65,5.1,9.76c-0.59,0.18-1.22-0.15-1.4-0.74 c-0.18-0.59,0.15-1.22,0.74-1.4c4.27-1.29,11.33-1.04,15.77,1.59c0.53,0.32,0.7,1.01,0.38,1.55 C19.86,11.05,19.17,11.23,19.04,11.16z" />
+        </svg>
+        <span
+          class="text-black tracking-wide uppercase text-sm font-semibold whitespace-nowrap group-hover:text-white transition-colors">
+          BANDA SONORA OFICIAL
+        </span>
+      </a>
+    </div>
+
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+      class="absolute inset-0 z-40 w-full h-full pointer-events-none">
+      <g v-for="i in 8" :key="'waterfall-' + i">
+        <line :x1="25 + i * 5" y1="0" :x2="25 + i * 5" y2="100" stroke="white" stroke-width="2"
+          class="waterfall-line opacity-0 transition-opacity duration-300 cursor-pointer pointer-events-auto"
+          @mouseenter="playHarmonic(i)" />
+        <line :x1="25 + i * 5" y1="20" :x2="25 + i * 5" y2="80" stroke="white" stroke-width="0.5"
+          class="waterfall-line-core opacity-0 pointer-events-none" :id="'line-core-' + i" />
+      </g>
+      <g class="cursor-trails z-10">
+        <circle cx="45" cy="40" r="0.5" fill="white" class="opacity-10" />
+        <circle cx="55" cy="45" r="0.8" fill="white" class="opacity-15" />
+        <circle cx="50" cy="35" r="0.5" fill="white" class="opacity-10" />
+      </g>
+    </svg>
+
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted } from 'vue';
+import gsap from 'gsap';
 
-const progress = ref(45); // Ejemplo de progreso
-const tracks = [
-  { id: 1, title: 'Gris, Pt. 1', cover: '/images/covers/track1.jpg' },
-  { id: 2, title: 'In Your Hands', cover: '/images/covers/track2.jpg' },
-  { id: 3, title: 'Unfolding', cover: '/images/covers/track3.jpg' },
-  { id: 4, title: 'Debris', cover: '/images/covers/track4.jpg' }
+const notes = [
+  261.63, // C4 (Do)
+  293.66, // D4 (Re)
+  329.63, // E4 (Mi)
+  349.23, // F4 (Fa)
+  392.00, // G4 (Sol)
+  440.00, // A4 (La)
+  493.88, // B4 (Si)
+  523.25  // C5 (Do octava)
 ];
-const currentTrack = ref(tracks[0]);
+
+const playHarmonic = (index) => {
+  // 1. Animación Visual (GSAP)
+  gsap.fromTo(`#line-core-${index}`,
+    { opacity: 0.8, scaleY: 0 },
+    { opacity: 0, scaleY: 1.5, duration: 2, ease: "power2.out" }
+  );
+
+  // 2. Síntesis de Audio
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
+
+  // Configuración del timbre (Onda Senoidal = Suave/Celestial)
+  oscillator.type = 'sine';
+  oscillator.frequency.setValueAtTime(notes[index - 1], audioCtx.currentTime);
+
+  // Envolvente de volumen (Para que no suene como un pitido seco)
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  // Ataque rápido pero no instantáneo (evita "clicks")
+  gainNode.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.1);
+  // Caída larga (Efecto de campana/reverberación)
+  gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.0);
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
+  oscillator.start();
+  oscillator.stop(audioCtx.currentTime + 2.0);
+};
 </script>
 
 <style scoped>
-.music-card {
-  /* Fix de performance y visual para el blur */
-  backdrop-filter: blur(25px) saturate(150%);
-  -webkit-backdrop-filter: blur(25px) saturate(150%);
-  will-change: transform;
+/* Hacemos que las líneas vibren un poco al tocarlas */
+.waterfall-line:hover {
+  filter: url(#waterfall-glow);
+  stroke-width: 4;
 }
 
-/* Ocultar scrollbar pero mantener funcionalidad */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+/* Animación de las partículas (cursor-trails) */
+.cursor-trails circle {
+  animation: float 4s infinite ease-in-out;
 }
 
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.1;
+  }
+
+  50% {
+    transform: translateY(-20px);
+    opacity: 0.3;
+  }
 }
 </style>

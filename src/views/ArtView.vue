@@ -14,7 +14,7 @@ const artPieces = ref([
   <section class="relative w-full h-screen overflow-hidden bg-black">
 
     <div class="absolute inset-0 z-0">
-      <img src="/images/art-bg.png" class="w-full h-full object-cover opacity-80" alt="Background Forest" />
+      <img src="/images/art-bg.png" class="w-full h-full object-cover" alt="Background Forest" />
     </div>
 
     <div class="relative z-10 w-full h-full">

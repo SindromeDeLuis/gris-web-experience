@@ -2,7 +2,7 @@
   <section
     class="relative z-0 w-full min-h-[200vh] bg-[#0a0a0a] flex flex-col justify-center py-20 px-6 overflow-hidden">
 
-    <div class="absolute inset-0 -z-11 overflow-hidden">
+    <div class="absolute inset-0 z-0 overflow-hidden">
       <img src="/images/gameplay-bg.png" alt="GRIS Gameplay Background"
         class="w-full h-full object-cover scale-105 transition-transform duration-1000" />
     </div>
@@ -18,10 +18,17 @@
           Mecánicas simples que crean experiencias profundas
         </p>
       </div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto w-full">
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mb-20">
         <GameplayCard v-for="item in abilities" :key="item.id" v-bind="item" class="gameplay-card" />
       </div>
+
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto w-full">
 
       <div class="text-center my-8">
         <h2
@@ -29,10 +36,12 @@
           MECÁNICAS DE JUEGO
         </h2>
       </div>
-
-      <<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center mb-20">
-        <GameplayCard2 v-for="item in stats" :key="item.id" v-bind="item" class="gameplay-card" />
     </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto w-full">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center mb-20">
+        <GameplayCard2 v-for="item in stats" :key="item.id" v-bind="item" class="gameplay-card" />
+      </div>
     </div>
 
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black via-[#0f0505] to-black opacity-50"></div>

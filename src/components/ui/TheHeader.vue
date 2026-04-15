@@ -65,7 +65,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
     <router-link to="/" class="flex-1 flex items-center gap-3">
       <img src="/images/icons/Nomada-Symbol.png" alt="" class="w-10 h-10" />
       <div class="flex flex-col">
-        <span class="font-serif text-lg tracking-[0.4em] uppercase leading-none">Nomada</span>
+        <span class="font-sans text-lg tracking-[0.2em] uppercase leading-none">Nomada</span>
         <span class="text-[8px] tracking-[0.5em] text-white/50 uppercase mt-1">Studio</span>
       </div>
     </router-link>
@@ -84,7 +84,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 
     <div class="flex-1 flex justify-end items-center gap-6">
-      <button class="relative group px-6 py-2 overflow-hidden border border-white/50">
+      <button class="relative group px-6 py-2 overflow-hidden border border-white/50 cursor-pointer">
         <span
           class="relative z-10 text-[10px] tracking-[0.4em] uppercase group-hover:text-black transition-colors duration-500">
           Mirar Tráiler

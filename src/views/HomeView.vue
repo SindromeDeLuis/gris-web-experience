@@ -7,11 +7,8 @@ import ConstellationNav from '../components/sections/ConstellationNav.vue';
   <div class="relative min-h-[200vh] bg-[#050505]">
 
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img
-        src="/images/home-bg.png"
-        alt="GRIS Home Background"
-        class="w-full h-full object-cover opacity-90 scale-105 transition-transform duration-1000"
-      />
+      <img src="/images/home-bg.png" alt="GRIS Home Background"
+        class="w-full h-full object-cover opacity-90 transition-transform duration-600 will-change-transform" />
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#050505]"></div>
     </div>
 

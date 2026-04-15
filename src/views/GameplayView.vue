@@ -4,7 +4,7 @@
 
     <div class="absolute inset-0 z-0 overflow-hidden">
       <img src="/images/gameplay-bg.png" alt="GRIS Gameplay Background"
-        class="w-full h-full object-cover scale-105 transition-transform duration-1000" />
+        class="w-full h-full object-cover transition-transform duration-600 will-change-transform" />
     </div>
 
     <div class="relative z-10 max-w-6xl mx-auto w-full">

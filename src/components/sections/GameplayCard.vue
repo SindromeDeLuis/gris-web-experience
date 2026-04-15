@@ -17,7 +17,7 @@ const isFlipped = ref(false);
       :class="{ '[transform:rotateY(180deg)]': isFlipped }">
 
       <div class="absolute inset-0 m-auto h-full w-full rounded-3xl border border-white/10
-              overflow-hidden backdrop-blur-[10px] bg-white/[0.05]
+              overflow-hidden backdrop-blur-[10px] bg-black/[0.15]
               flex flex-col items-center justify-center p-6
               shadow-[0_0_20px_rgba(255,255,255,0.6)]
               hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-shadow duration-500">

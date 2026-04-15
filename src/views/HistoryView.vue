@@ -1,4 +1,3 @@
-
 <script setup>
 import HistoryIntro from '../components/sections/HistoryIntro.vue';
 import HistoryStars from '../components/sections/HistoryStars.vue';
@@ -8,19 +7,13 @@ import HistoryStars from '../components/sections/HistoryStars.vue';
   <div class="relative min-h-[200vh]">
 
     <div class="absolute inset-0 -z-11 overflow-hidden">
-      <img
-        src="/images/history-bg.png"
-        alt="GRIS History Background"
-        class="w-full h-full object-cover scale-105 transition-transform duration-1000"
-      />
+      <img src="/images/history-bg.png" alt="GRIS History Background"
+        class="w-full h-full object-cover transition-transform duration-600 will-change-transform" />
     </div>
 
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <img
-        src="/images/history-bg2.png"
-        class="w-full h-full object-cover scale-105 transition-transform duration-1000"
-        id="parallax-bg-2"
-      />
+      <img src="/images/history-bg2.png"
+        class="w-full h-full object-cover transition-transform duration-600 will-change-transform" id="parallax-bg-2" />
     </div>
 
     <HistoryIntro />

@@ -13,7 +13,7 @@ defineProps({
   <div class="group h-64 w-136 [perspective:1000px] cursor-pointer">
     <div class="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d]">
       <div class="absolute inset-0 m-auto h-full w-full rounded-3xl border border-white/10
-              overflow-hidden backdrop-blur-[10px] bg-white/[0.05]
+              overflow-hidden backdrop-blur-[10px] bg-black/[0.15]
               flex flex-col items-center justify-center p-6
               shadow-[0_0_20px_rgba(255,255,255,0.6)]
               hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-shadow duration-500">

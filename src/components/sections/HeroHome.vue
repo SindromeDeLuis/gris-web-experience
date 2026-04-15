@@ -65,7 +65,16 @@ const scrollToRecorrido = () => {
 <style scoped>
 /* Ajuste para que la tipografía se vea más fina en pantallas retina */
 .hero-title {
+  isolation: isolate;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.hero-subtitle {
+  /* Forzamos a la GPU a renderizar esto como una capa independiente */
+  transform: translateZ(0);
+  will-change: opacity, transform;
 }
 </style>

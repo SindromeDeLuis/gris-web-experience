@@ -37,11 +37,14 @@ const handleScroll = () => {
 const enterMenu = (el, done) => {
   const tl = gsap.timeline({ onComplete: done });
 
-  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" });
-  tl.fromTo(".nav-link",
-    { y: 30, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" },
-    "-=0.4"
+  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" });
+
+  const links = el.querySelectorAll('.nav-link');
+
+  tl.fromTo(links,
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: "power3.out" },
+    "-=0.3"
   );
 };
 
@@ -98,10 +101,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
       </button>
 
       <transition @enter="enterMenu" @leave="leaveMenu">
-      <div v-if="isMenuOpen" class="menu-wrapper fixed inset-0 z-[105]">
-        <div class="absolute inset-0 bg-black/20 backdrop-blur-xl pointer-events-none"></div>
+      <div v-show="isMenuOpen" class="menu-wrapper fixed inset-0 z-[105]">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80"></div>
 
-        <nav class="side-panel absolute top-0 right-0 h-full w-full max-w-sm bg-white/[0.3] border-l border-white/5 flex flex-col justify-center px-16 gap-8">
+        <nav class="side-panel absolute top-0 right-0 h-full w-full max-w-sm bg-white/[0.5] border-l border-white/5 flex flex-col justify-center px-16 gap-8">
           <router-link
             v-for="(link, index) in navLinks"
             :key="index"

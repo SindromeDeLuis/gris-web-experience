@@ -38,9 +38,7 @@ const scrollToRecorrido = () => {
 
     <div class="relative z-10 text-center px-4">
 
-      <p class="hero-subtitle font-light tracking-[0.6em] text-white/60 text-xs md:text-sm uppercase mb-16">
-        Un viaje emocional sin palabras
-      </p>
+
     </div>
 
     <div class="absolute bottom-24 z-10">

@@ -84,7 +84,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 
     <div class="flex-1 flex justify-end items-center gap-6">
-      <button class="relative group px-6 py-2 overflow-hidden border border-white/50 cursor-pointer">
+      <button class="hidden md:relative group px-6 py-2 overflow-hidden border border-white/50 cursor-pointer">
         <span
           class="relative z-10 text-[10px] tracking-[0.4em] uppercase group-hover:text-black transition-colors duration-500">
           Mirar Tráiler
@@ -94,29 +94,32 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
         </div>
       </button>
 
-      <button @click="toggleMenu" class="relative z-[110] w-10 h-10 flex flex-col justify-center items-end gap-1.5 group cursor-pointer">
-        <div :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'rotate-45 translate-y-[7px]' : '']"></div>
-        <div :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'opacity-0' : '']"></div>
-        <div :class="['h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'w-7 -rotate-45 -translate-y-[7px]' : 'w-4 group-hover:w-7 self-end']"></div>
+      <button @click="toggleMenu"
+        class="relative z-[110] w-10 h-10 flex flex-col justify-center items-end gap-1.5 group cursor-pointer">
+        <div
+          :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'rotate-45 translate-y-[7px]' : '']">
+        </div>
+        <div
+          :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'opacity-0' : '']">
+        </div>
+        <div
+          :class="['h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'w-7 -rotate-45 -translate-y-[7px]' : 'w-4 group-hover:w-7 self-end']">
+        </div>
       </button>
 
       <transition @enter="enterMenu" @leave="leaveMenu">
-      <div v-show="isMenuOpen" class="menu-wrapper fixed inset-0 z-[105]">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80"></div>
+        <div v-show="isMenuOpen" class="menu-wrapper fixed inset-0 z-[105]">
+          <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80"></div>
 
-        <nav class="side-panel absolute top-0 right-0 h-full w-full max-w-sm bg-white/[0.5] border-l border-white/5 flex flex-col justify-center px-16 gap-8">
-          <router-link
-            v-for="(link, index) in navLinks"
-            :key="index"
-            :to="link.path"
-            @click="isMenuOpen = false"
-            class="nav-link text-black/60 text-3xl font-medium font-sans tracking-[0.15em] uppercase text-center opacity-0 transition-all duration-500 hover:text-black/80 hover:underline hover:underline-offset-4 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
-          >
-            {{ link.name }}
-          </router-link>
-        </nav>
-      </div>
-    </transition>
+          <nav
+            class="side-panel absolute top-0 right-0 h-full w-full max-w-sm bg-white/[0.5] border-l border-white/5 flex flex-col justify-center px-16 gap-8">
+            <router-link v-for="(link, index) in navLinks" :key="index" :to="link.path" @click="isMenuOpen = false"
+              class="nav-link text-black/60 text-3xl font-medium font-sans tracking-[0.15em] uppercase text-center opacity-0 transition-all duration-500 hover:text-black/80 hover:underline hover:underline-offset-4 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
+              {{ link.name }}
+            </router-link>
+          </nav>
+        </div>
+      </transition>
 
     </div>
   </header>
@@ -124,7 +127,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 <style scoped>
 /* El texto de "Gris" y el botón deben estar por encima del blur */
-header > * {
+header>* {
   -webkit-font-smoothing: antialiased;
 }
 

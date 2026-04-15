@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue'
+import { pieces } from '@/data/artpieces';
 
-// Definimos las piezas de arte y su posición exacta en %
-const artPieces = ref([
-  { id: 1, x: 25, y: 35, width: 12, src: '/art/square-yellow.webp', blur: true, title: 'Textura 01' },
-  { id: 2, x: 65, y: 20, width: 10, src: '/art/square-teal.webp', blur: true, title: 'Textura 02' },
-  { id: 3, x: 45, y: 60, width: 15, src: '/art/square-main.webp', blur: false, title: 'Un universo que renace' },
-  { id: 4, x: 80, y: 55, width: 14, src: '/art/square-green.webp', blur: true, title: 'Textura 03' },
-])
+const artPieces = ref(pieces)
+const activeNode = ref(null);
+
+const selectNode = (node) => {
+  activeNode.value = node;
+};
 </script>
 
 <template>
@@ -20,38 +20,44 @@ const artPieces = ref([
     <div class="relative z-10 w-full h-full">
 
       <div v-for="piece in artPieces" :key="piece.id"
-        class="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 hover:scale-110 cursor-pointer group"
+        class="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 hover:scale-105 cursor-pointer group"
         :style="{
           left: piece.x + '%',
           top: piece.y + '%',
           width: piece.width + 'vw'
         }">
-        <img :src="piece.src" :class="[
+        <img  @click="selectNode(piece)" :src="piece.src" :class="[
           'w-full h-auto shadow-2xl transition-all duration-500',
-          piece.blur ? 'blur-[8px] group-hover:blur-0 opacity-70 group-hover:opacity-100' : 'opacity-100'
+          piece.blur ? 'blur-[8px] group-hover:blur-0 opacity-90 group-hover:opacity-100' : 'opacity-100'
         ]" />
 
-        <div
-          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <span class="text-white text-xs tracking-[0.3em] uppercase font-light bg-black/40 px-4 py-2 backdrop-blur-sm">
-            {{ piece.title }}
-          </span>
-        </div>
       </div>
 
     </div>
 
-    <div class="absolute inset-0 pointer-events-none z-20 flex flex-col justify-center px-[12vw] space-y-4 mt-[11em]">
-      <div class="w-fit bg-black/40 backdrop-blur-sm px-6 py-4 border-l-2 border-white/10 shadow-2xl">
+    <Transition name="fade">
+      <div v-if="activeNode"
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md z-20 px-10">
+
+        <div class="relative group max-w-2xl cursor-pointer" @click="activeNode = null">
+          <img :src="activeNode.image"
+            class="relative z-10 w-full drop-shadow-[0_0_100px_rgba(255,255,255,0.5)] group-hover:drop-shadow-[0_0_150px_rgba(255,255,255,0.8)] transition-all duration-700" />
+
+        </div>
+      </div>
+    </Transition>
+
+    <div class="absolute inset-0 pointer-events-none z-9 flex flex-col justify-center px-[10vw] space-y-4 mt-[11em]">
+      <div class="w-fit px-6 py-4 border-l-2 border-white/10" oldclass=" bg-black/40 backdrop-blur-sm shadow-2xl">
         <h1
-          class="text-white text-5xl md:text-6xl font-bold leading-[0.9] mix-blend-difference uppercase tracking-tighter">
+          class="text-white opacity-80 text-6xl md:text-6xl font-bold leading-none mix-blend-difference text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
           Un universo<br>
-          <span class="text-white/90">que renace</span>
+          <span class="text-white">que renace</span>
         </h1>
       </div>
 
       <p
-        class="text-white opacity-80 text-6xl md:text-6xl font-bold leading-none mix-blend-difference text-right mt-[6rem] drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+        class="text-white opacity-80 text-6xl md:text-6xl font-bold leading-none mix-blend-difference text-right mt-[6rem] drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
         en cada textura
       </p>
     </div>
@@ -86,5 +92,15 @@ const artPieces = ref([
 .absolute.group:nth-child(even) {
   animation-duration: 8s;
   animation-delay: 1s;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

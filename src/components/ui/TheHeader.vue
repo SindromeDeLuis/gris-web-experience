@@ -107,7 +107,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
             :key="index"
             :to="link.path"
             @click="isMenuOpen = false"
-            class="nav-link text-black/60 text-3xl font-medium font-sans tracking-[0.15em] uppercase opacity-0 transition-all duration-500 hover:text-black/80 hover:underline hover:underline-offset-4 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+            class="nav-link text-black/60 text-3xl font-medium font-sans tracking-[0.15em] uppercase text-center opacity-0 transition-all duration-500 hover:text-black/80 hover:underline hover:underline-offset-4 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
           >
             {{ link.name }}
           </router-link>

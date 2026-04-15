@@ -90,7 +90,7 @@ const navigateToSection = (nodeId) => {
       <div v-if="activeNode"
         class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md z-20 px-10">
 
-        <div @click="navigateToSection(activeNode.id)" class="relative group max-w-2xl">
+        <div @click="navigateToSection(activeNode.id)" class="relative group max-w-2xl cursor-pointer">
           <img :src="activeNode.image"
             class="relative z-10 w-full rounded-[28px] border border-white/20 shadow-[0_0_100px_rgba(255,255,255,0.5)] group-hover:shadow-[0_0_150px_rgba(255,255,255,0.8)] transition-all duration-700" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>

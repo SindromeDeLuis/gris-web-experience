@@ -1,15 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-
-const isScrolled = ref(false);
-const isMenuOpen = ref(false);
-// Cambiar el fondo del header al hacer scroll para que no se pierda con el arte claro
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
-};
-
-onMounted(() => window.addEventListener('scroll', handleScroll));
-onUnmounted(() => window.removeEventListener('scroll', handleScroll));
+import gsap from 'gsap';
 
 const platforms = [
   { name: 'Steam', src: 'images/icons/steam.svg', enlace: 'https://store.steampowered.com/app/683320/GRIS/' },
@@ -18,6 +9,49 @@ const platforms = [
   { name: 'Xbox', src: 'images/icons/xbox.svg', enlace: 'https://www.xbox.com/en-us/games/store/gris/9n6c6j7c3gtq' },
   { name: 'App Store', src: 'images/icons/apple.svg', enlace: 'https://apps.apple.com/us/app/gris/id1445379072' },
 ];
+
+const isMenuOpen = ref(false);
+
+const navLinks = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Historia', path: '/historia' },
+  { name: 'Arte', path: '/arte' },
+  { name: 'Música', path: '/musica' },
+  { name: 'Gameplay', path: '/gameplay' },
+  { name: '¡ADQUIERE GRIS!', path: '/tiendas' }
+];
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+  // Bloquear scroll cuando el menú esté abierto
+  document.body.style.overflow = isMenuOpen.value ? 'hidden' : '';
+};
+
+const isScrolled = ref(false);
+// Cambiar el fondo del header al hacer scroll para que no se pierda con el arte claro
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+};
+
+// Animaciones de Entrada (GSAP)
+const enterMenu = (el, done) => {
+  const tl = gsap.timeline({ onComplete: done });
+
+  tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" });
+  tl.fromTo(".nav-link",
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" },
+    "-=0.4"
+  );
+};
+
+// Animaciones de Salida
+const leaveMenu = (el, done) => {
+  gsap.to(el, { opacity: 0, duration: 0.6, ease: "power2.in", onComplete: done });
+};
+
+onMounted(() => window.addEventListener('scroll', handleScroll));
+onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 </script>
 
 <template>
@@ -57,20 +91,52 @@ const platforms = [
         </div>
       </button>
 
-      <button @click="isMenuOpen = !isMenuOpen" class="flex flex-col gap-1.5 p-2 group">
-        <div class="w-6 h-[1px] bg-white/70 group-hover:bg-white transition-all"></div>
-        <div class="w-6 h-[1px] bg-white/70 group-hover:bg-white transition-all"></div>
-        <div class="w-4 h-[1px] bg-white/70 group-hover:w-6 group-hover:bg-white transition-all self-end"></div>
+      <button @click="toggleMenu" class="relative z-[110] w-10 h-10 flex flex-col justify-center items-end gap-1.5 group cursor-pointer">
+        <div :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'rotate-45 translate-y-[7px]' : '']"></div>
+        <div :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'opacity-0' : '']"></div>
+        <div :class="['h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'w-7 -rotate-45 -translate-y-[7px]' : 'w-4 group-hover:w-7 self-end']"></div>
       </button>
+
+      <transition @enter="enterMenu" @leave="leaveMenu">
+      <div v-if="isMenuOpen" class="menu-wrapper fixed inset-0 z-[105]">
+        <div class="absolute inset-0 bg-black/20 backdrop-blur-xl pointer-events-none"></div>
+
+        <nav class="side-panel absolute top-0 right-0 h-full w-full max-w-sm bg-white/[0.3] border-l border-white/5 flex flex-col justify-center px-16 gap-8">
+          <router-link
+            v-for="(link, index) in navLinks"
+            :key="index"
+            :to="link.path"
+            @click="isMenuOpen = false"
+            class="nav-link text-black/60 text-3xl font-medium font-sans tracking-[0.15em] uppercase opacity-0 transition-all duration-500 hover:text-black/80 hover:underline hover:underline-offset-4 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+          >
+            {{ link.name }}
+          </router-link>
+        </nav>
+      </div>
+    </transition>
 
     </div>
   </header>
 </template>
 
 <style scoped>
+/* El texto de "Gris" y el botón deben estar por encima del blur */
+header > * {
+  -webkit-font-smoothing: antialiased;
+}
+
 header span {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.menu-overlay {
+  z-index: 105;
+}
+
+.nav-link {
+  /* Sombra suave para mejorar legibilidad sobre el blur */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 </style>

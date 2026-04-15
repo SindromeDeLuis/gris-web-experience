@@ -13,16 +13,6 @@ onMounted(() => {
     duration: 3,
     ease: "power2.out"
   });
-
-  gsap.to(".star-aura", {
-    scale: 1.2,
-    opacity: 0.1,
-    duration: 2,
-    repeat: -1,
-    yoyo: true,
-    stagger: 0.3,
-    ease: "sine.inOut"
-  });
 });
 
 // Animación de Hover con GSAP para que sea más fluida que CSS
@@ -71,7 +61,7 @@ const navigateToSection = (nodeId) => {
       <g v-for="node in nodes" :key="node.id" @click="selectNode(node)" @mouseenter="hoverStar($event.currentTarget)"
         @mouseleave="leaveStar($event.currentTarget)" class="cursor-pointer group">
         <circle :cx="node.x" :cy="node.y" r="36" fill="white" class="star-aura opacity-10 transition-all duration-600"
-          style="filter: blur(8px);" />
+          style="opacity: 0.1;" />
 
         <circle :cx="node.x" :cy="node.y" r="30" fill="white" class="star-halo opacity-20 transition-all duration-500"
           style="filter: blur(3px);" />
@@ -88,7 +78,7 @@ const navigateToSection = (nodeId) => {
 
     <Transition name="fade">
       <div v-if="activeNode"
-        class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md z-20 px-10">
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 bg-black/90 z-20 px-10">
 
         <div @click="navigateToSection(activeNode.id)" class="relative group max-w-2xl cursor-pointer">
           <img :src="activeNode.image"

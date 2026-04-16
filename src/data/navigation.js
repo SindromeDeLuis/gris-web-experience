@@ -37,6 +37,6 @@ export const nodes = [
     subtitle: '¡Adquiere GRIS!',
     x: 900,
     y: 270,
-    image: '/images/navigation/tienda-preview.png',
+    image: '/images/navigation/tiendas-preview.png',
   },
 ]

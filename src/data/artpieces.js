@@ -1,8 +1,8 @@
 export const pieces = [
   {
     id: 1,
-    x: 34,
-    y: 36.5,
+    x: 21.5,
+    y: 17.5,
     width: 25,
     src: '/images/art/blur-1.png',
     blur: true,
@@ -10,8 +10,8 @@ export const pieces = [
   },
   {
     id: 2,
-    x: 46.5,
-    y: 48.5,
+    x: 34.5,
+    y: 29.5,
     width: 24,
     src: '/images/art/blur-2.png',
     blur: true,
@@ -19,8 +19,8 @@ export const pieces = [
   },
   {
     id: 3,
-    x: 53.5,
-    y: 42.5,
+    x: 40,
+    y: 22,
     width: 27,
     src: '/images/art/blur-3.png',
     blur: true,
@@ -28,8 +28,8 @@ export const pieces = [
   },
   {
     id: 4,
-    x: 74,
-    y: 56.5,
+    x: 68.5,
+    y: 42.5,
     width: 11,
     src: '/images/art/blur-4.png',
     blur: true,
@@ -37,8 +37,8 @@ export const pieces = [
   },
   {
     id: 5,
-    x: 105.5,
-    y: 50,
+    x: 93.5,
+    y: 26.5,
     width: 26,
     src: '/images/art/blur-6.png',
     blur: true,
@@ -46,8 +46,8 @@ export const pieces = [
   },
   {
     id: 6,
-    x: 96,
-    y: 39,
+    x: 83,
+    y: 19,
     width: 24,
     src: '/images/art/blur-5.png',
     blur: true,
@@ -55,8 +55,8 @@ export const pieces = [
   },
   {
     id: 7,
-    x: 20,
-    y: 55,
+    x: 12.5,
+    y: 42,
     width: 15,
     src: '/images/art/blur-7.png',
     blur: true,
@@ -64,8 +64,8 @@ export const pieces = [
   },
   {
     id: 8,
-    x: 73.5,
-    y: 102,
+    x: 60,
+    y: 75,
     width: 27,
     src: '/images/art/blur-8.png',
     blur: true,
@@ -73,8 +73,8 @@ export const pieces = [
   },
   {
     id: 9,
-    x: 89.5,
-    y: 88.5,
+    x: 76,
+    y: 63,
     width: 27,
     src: '/images/art/blur-9.png',
     blur: true,

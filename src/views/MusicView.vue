@@ -20,8 +20,8 @@
         class="w-full h-full object-cover transition-transform duration-600 will-change-transform" id="parallax-bg-2" />
     </div>
 
-    <div class="absolute top-24 left-16 z-20">
-      <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium">
+    <div class="absolute top-20 md:top-24 md:left-16 px-6 md:px-0 z-20">
+      <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium text-center md:text-left">
         Pasa el cursor por las cascadas para crear melodías
       </p>
     </div>

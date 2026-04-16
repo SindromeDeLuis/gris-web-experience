@@ -12,7 +12,8 @@ const isFlipped = ref(false);
 </script>
 
 <template>
-  <div class="group h-80 w-64 [perspective:1000px] cursor-pointer" @click="isFlipped = !isFlipped">
+  <div class="group h-52 md:h-80 max-w-md w-full md:w-64 [perspective:1000px] cursor-pointer"
+    @click="isFlipped = !isFlipped">
     <div class="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d]"
       :class="{ '[transform:rotateY(180deg)]': isFlipped }">
 
@@ -28,7 +29,7 @@ const isFlipped = ref(false);
         </div>
 
         <h3
-          class="relative font-sans text-lg font-semibold tracking-[0.15em] uppercase text-center leading-tight text-white px-2">
+          class="relative font-sans text-sm md:text-lg font-semibold tracking-[0.15em] uppercase text-center leading-tight text-white md:px-2">
           {{ ability }}
         </h3>
       </div>

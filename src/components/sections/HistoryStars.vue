@@ -36,44 +36,36 @@ const onLeave = (el) => {
 </script>
 
 <template>
-  <section class="relative w-full h-screen overflow-hidden flex items-center justify-center">
+  <section class="relative w-full h-screen z-0 overflow-hidden flex items-center justify-center">
 
-<div class="absolute inset-0 m-auto -z-10 w-[90dvw] h-[90dvh] pointer-events-none border border-white/20 rounded-[2rem] overflow-hidden backdrop-blur-[10px] bg-white/[0.03] shadow-[0_0_20px_rgba(255,255,255,0.6),0_0_20px_rgba(255,255,255,0.6)]">
+    <div
+      class="absolute inset-0 m-auto -z-10 w-[90dvw] h-[90dvh] pointer-events-none border border-white/20 rounded-[2rem] overflow-hidden backdrop-blur-[10px] bg-white/[0.03] shadow-[0_0_20px_rgba(255,255,255,0.6),0_0_20px_rgba(255,255,255,0.6)]">
 
-    <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent"></div>
 
-</div>
+    </div>
 
-    <div class="absolute top-12 left-24 z-20">
+    <div class="absolute top-12 text-center md:left-24 z-20">
       <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium">
-        Explora las estrellas con el cursor
+        Explora las estrellas <span class="hidden md:block">con el cursor</span>
       </p>
     </div>
 
     <div class="relative w-full h-full max-w-7xl max-h-[90vh]">
-      <div
-        v-for="node in historyNodes"
-        :key="node.id"
-        class="absolute group cursor-pointer"
-        :style="{ left: node.x + '%', top: node.y + '%' }"
-        @mouseenter="onEnter(node, $event.currentTarget)"
-        @mouseleave="onLeave($event.currentTarget)"
-      >
+      <div v-for="node in historyNodes" :key="node.id" class="absolute group cursor-pointer"
+        :style="{ left: node.x + '%', top: node.y + '%' }" @mouseenter="onEnter(node, $event.currentTarget)"
+        @mouseleave="onLeave($event.currentTarget)">
         <div class="ring absolute inset-0 border border-white/40 rounded-full scale-130"></div>
         <div class="ring absolute inset-0 border border-white/20 rounded-full scale-170"></div>
 
-        <div
-          :class="[
-            'bg-white rounded-full shadow-[0_0_20px_white] transition-transform duration-500 group-hover:scale-125',
-            node.size === 'extra-large' ? 'w-16 h-16' : node.size === 'large' ? 'w-12 h-12' : 'w-8 h-8'
-          ]"
-        ></div>
+        <div :class="[
+          'bg-white rounded-full shadow-[0_0_20px_white] transition-transform duration-500 group-hover:scale-125',
+          node.size === 'extra-large' ? 'w-10 lg:w-16 h-10 lg:h-16' : node.size === 'large' ? 'w-8 lg:w-12 h-8 lg:h-12' : 'w-6 lg:w-8 h-6 lg:h-8'
+        ]"></div>
 
         <Transition name="slide-fade">
-          <div
-            v-if="activeNode?.id === node.id"
-            class="absolute left-full ml-4 top-1/2 -translate-y-1/2 whitespace-nowrap z-30"
-          >
+          <div v-if="activeNode?.id === node.id"
+            class="absolute md:left-full md:ml-4 top-20 md:top-1/2 -translate-y-1/2 whitespace-nowrap z-30">
             <div class="bg-[#2d121b]/90 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/10 shadow-2xl">
               <span class="text-white/90 tracking-wide text-lg font-semibold">{{ node.title }}</span>
             </div>
@@ -82,7 +74,7 @@ const onLeave = (el) => {
       </div>
     </div>
 
-    <div class="absolute bottom-12 left-24 z-20">
+    <div class="absolute bottom-12 text-center md:left-24 z-20 px-6 md:px-0">
       <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium">
         Encuentra detalles sobre el viaje de GRIS
       </p>
@@ -91,9 +83,16 @@ const onLeave = (el) => {
 </template>
 
 <style scoped>
-.slide-fade-enter-active { transition: all 0.3s ease-out; }
-.slide-fade-leave-active { transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1); }
-.slide-fade-enter-from, .slide-fade-leave-to {
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
   transform: translateX(-10px) translateY(-50%);
   opacity: 0;
 }
@@ -103,9 +102,17 @@ const onLeave = (el) => {
 }
 
 @keyframes softPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
+
 .ring {
   animation: softPulse 4s infinite ease-in-out;
 }

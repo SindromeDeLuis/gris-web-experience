@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <a v-for="store in stores" :key="store.name" :href="store.url" target="_blank" class="group relative flex flex-col items-center justify-center px-8 pt-8 pb-6 rounded-2xl
                 border border-white/10 bg-black/[0.2] backdrop-blur-[5px] transition-all
                 duration-500 hover:bg-black/[0.08] hover:border-black/20 hover:scale-105
@@ -18,7 +18,7 @@
         {{ store.name }}
       </p>
 
-      <span class="relative text-lg tracking-wide text-white/70 group-hover:text-white transition-colors">
+      <span class="relative text-lg text-center tracking-wide text-white/70 group-hover:text-white transition-colors">
         {{ store.subtitle }}
       </span>
       <span

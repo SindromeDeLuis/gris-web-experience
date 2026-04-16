@@ -6,10 +6,10 @@ import ConstellationNav from '../components/sections/ConstellationNav.vue';
 <template>
   <div class="relative min-h-[200vh] bg-[#050505]">
 
-    <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="fixed lg:absolute inset-0 z-0 overflow-hidden">
       <img src="/images/home-bg.png" alt="GRIS Home Background"
-        class="w-full h-full object-cover opacity-90 transition-transform duration-600 will-change-transform" />
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#050505]"></div>
+        class="w-full h-[100vh] lg:h-full object-cover opacity-90 transition-transform duration-600 will-change-transform" />
+      <div class="hidden lg:absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#050505]"></div>
     </div>
 
     <div class="relative z-10">

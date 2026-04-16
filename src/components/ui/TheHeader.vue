@@ -59,8 +59,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 
 <template>
   <header :class="[
-    'fixed top-0 left-0 w-full z-50 transition-all duration-700 px-8 py-6 flex items-center justify-between',
-    isScrolled ? 'bg-black/90 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent'
+    'fixed top-0 left-0 w-full z-50 transition-all duration-700 px-6 md:px-8 py-4 md:py-6 flex items-center justify-between',
+    isScrolled ? 'bg-black/90 border-b border-white/5 py-4' : 'bg-transparent'
   ]">
     <router-link to="/" class="flex-1 flex items-center gap-3">
       <img src="/images/icons/Nomada-Symbol.png" alt="" class="w-10 h-10" />
@@ -95,7 +95,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
       </button>
 
       <button @click="toggleMenu"
-        class="relative z-[110] w-10 h-10 flex flex-col justify-center items-end gap-1.5 group cursor-pointer">
+        class="relative z-[151] w-10 h-10 flex flex-col justify-center items-end gap-1.5 group cursor-pointer">
         <div
           :class="['w-7 h-[1.5px] bg-white/70 group-hover:bg-white transition-all duration-600', isMenuOpen ? 'rotate-45 translate-y-[7px]' : '']">
         </div>
@@ -108,7 +108,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
       </button>
 
       <transition @enter="enterMenu" @leave="leaveMenu">
-        <div v-show="isMenuOpen" class="menu-wrapper fixed inset-0 z-[105]">
+        <div v-show="isMenuOpen" class="menu-wrapper fixed inset-0 z-[150]">
           <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80"></div>
 
           <nav

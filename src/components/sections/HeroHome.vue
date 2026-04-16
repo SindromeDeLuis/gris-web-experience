@@ -48,7 +48,7 @@ const scrollToRecorrido = () => {
           class="absolute inset-0 border border-white rounded-full group-hover:border-white group-hover:bg-white transition-colors duration-500"></span>
 
         <span
-          class="relative text-[12px] tracking-[0.6em] uppercase text-white group-hover:text-black transition-all duration-500 whitespace-nowrap pl-[0.8em]">
+          class="relative text-[13px] lg:text-[12px] font-semibold lg:font-normal tracking-[0.1em] lg:tracking-[0.6em] uppercase text-white group-hover:text-black transition-all duration-500 whitespace-nowrap pl-[0.8em]">
           Iniciar el recorrido
         </span>
       </button>

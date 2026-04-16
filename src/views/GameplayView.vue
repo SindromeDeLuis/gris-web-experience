@@ -2,14 +2,14 @@
   <section
     class="relative z-0 w-full min-h-[200vh] bg-[#0a0a0a] flex flex-col justify-center py-20 px-6 overflow-hidden">
 
-    <div class="absolute inset-0 z-0 overflow-hidden">
+    <div class="fixed md:absolute inset-0 z-0 overflow-hidden">
       <img src="/images/gameplay-bg.png" alt="GRIS Gameplay Background"
-        class="w-full h-full object-cover transition-transform duration-600 will-change-transform" />
+        class="w-full h-[100vh] lg:h-full object-cover transition-transform duration-600 will-change-transform" />
     </div>
 
     <div class="relative z-10 max-w-6xl mx-auto w-full">
 
-      <div class="text-center my-16">
+      <div class="text-center my-8 md:my-16">
         <h2
           class="text-white/80 font-sans text-4xl md:text-5xl font-bold uppercase mix-blend-difference drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
           HABILIDADES DE JUEGO
@@ -22,7 +22,7 @@
 
     <div class="relative z-10 max-w-6xl mx-auto w-full">
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mb-20">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mb-20">
         <GameplayCard v-for="item in abilities" :key="item.id" v-bind="item" class="gameplay-card" />
       </div>
 

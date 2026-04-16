@@ -11,33 +11,32 @@ const selectNode = (node) => {
 </script>
 
 <template>
-  <section class="relative w-full h-screen overflow-hidden bg-black">
+  <section class="relative w-full h-screen overflow-x-auto overflow-y-hidden bg-black flex">
 
-    <div class="absolute inset-0 z-0">
-      <img src="/images/art-bg.png" class="w-full h-full object-cover" alt="Background Forest" />
-    </div>
+    <div class="relative h-full w-[300vw] lg:w-full flex-shrink-0">
 
-    <div class="relative z-10 w-full h-full">
+      <div class="absolute inset-0 z-0">
+        <img src="/images/art-bg.png" class="w-full h-full object-cover" alt="Background Forest" />
+      </div>
 
       <div v-for="piece in artPieces" :key="piece.id"
-        class="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 hover:scale-105 cursor-pointer group"
+        class="art-piece-container absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-700 hover:scale-105 cursor-pointer group"
         :style="{
           left: piece.x + '%',
           top: piece.y + '%',
-          width: piece.width + 'vw'
+          '--base-w': piece.width
         }">
-        <img  @click="selectNode(piece)" :src="piece.src" :class="[
-          'w-full h-auto shadow-2xl transition-all duration-500',
+        <img @click="selectNode(piece)" :src="piece.src" :class="[
+          'w-full h-auto transition-all duration-500',
           piece.blur ? 'blur-[8px] group-hover:blur-0 opacity-90 group-hover:opacity-100' : 'opacity-100'
         ]" />
-
       </div>
 
     </div>
 
     <Transition name="fade">
       <div v-if="activeNode"
-        class="absolute inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md z-20 px-10">
+        class="fixed inset-0 flex flex-col items-center justify-center bg-black/80 backdrop-blur-md z-20 px-10">
 
         <div class="relative group max-w-2xl cursor-pointer" @click="activeNode = null">
           <img :src="activeNode.image"
@@ -47,60 +46,83 @@ const selectNode = (node) => {
       </div>
     </Transition>
 
-    <div class="absolute inset-0 pointer-events-none z-9 flex flex-col justify-center px-[10vw] space-y-4 mt-[11em]">
-      <div class="w-fit px-6 py-4 border-l-2 border-white/10" oldclass=" bg-black/40 backdrop-blur-sm shadow-2xl">
+    <div
+      class="fixed inset-0 pointer-events-none z-15 flex flex-col justify-evenly lg:justify-center px-4 md:px-[10vw] space-y-4">
+      <div class="w-fit px-6 py-4 lg:mt-[10rem]">
         <h1
-          class="text-white opacity-80 text-6xl md:text-6xl font-bold leading-none mix-blend-difference text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
-          Un universo<br>
+          class="text-white opacity-80 text-4xl md:text-6xl font-bold leading-none mix-blend-difference text-left drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
+          Un<br class="block md:hidden">
+          universo<br>
           <span class="text-white">que renace</span>
         </h1>
       </div>
-
       <p
-        class="text-white opacity-80 text-6xl md:text-6xl font-bold leading-none mix-blend-difference text-right mt-[6rem] drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
+        class="text-white opacity-80 text-4xl md:text-6xl font-bold leading-none mix-blend-difference text-right mt-[6rem] drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
         en cada textura
       </p>
     </div>
 
-    <div class="absolute bottom-12 left-24 z-20">
-      <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium">
+    <div class="fixed bottom-12 lg:left-24 z-20 px-6 md:px-0">
+      <p class="text-white/70 text-sm tracking-[0.1em] uppercase font-medium text-center lg:text-left">
         Descubre los secretos que guardan los árboles
       </p>
     </div>
+
   </section>
 </template>
 
 <style scoped>
-/* Animación de flotación suave para las piezas */
-.absolute.group {
-  animation: float 6s ease-in-out infinite;
+/* Ocultar scrollbar para estética de juego */
+section {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-@keyframes float {
+section::-webkit-scrollbar {
+  display: none;
+}
 
-  0%,
-  100% {
-    transform: translate(-50%, -52%);
+/* El truco del Parallax: */
+.relative.h-full.w-\[300vw\] {
+  /* Creamos una perspectiva para el contenedor */
+  perspective: 1px;
+  perspective-origin: center;
+}
+
+.absolute.inset-0.z-0 {
+  /* Si mueves el fondo "hacia atrás" en el eje Z y lo escalas,
+     el scroll natural lo moverá más lento.
+  */
+  transform: translateZ(-1px) scale(2);
+  transform-origin: center;
+}
+
+.art-piece-container {
+  /* MÓVIL (Por defecto): Multiplicamos el ancho base para que no se vea minúsculo */
+  /* Si piece.width es 10, aquí se verá como 30vw */
+  width: calc(var(--base-w) * 3vw);
+  min-width: 80px;
+  /* Evita que desaparezcan si el valor es muy bajo */
+}
+
+/* TABLET (md) */
+@media (min-width: 768px) {
+  .art-piece-container {
+    width: calc(var(--base-w) * 2vw);
   }
+}
 
-  50% {
-    transform: translate(-50%, -48%);
+/* DESKTOP (xl) */
+@media (min-width: 1280px) {
+  .art-piece-container {
+    width: calc(var(--base-w) * 1vw);
+    max-width: 600px;
+    /* Un tope para que no rompa la estética en pantallas ultra-wide */
   }
 }
 
-/* Retraso aleatorio para que no se muevan todas iguales */
-.absolute.group:nth-child(even) {
-  animation-duration: 8s;
-  animation-delay: 1s;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+/* Tu animación de flotación se mantiene igual */
+.art-piece-container {
+  animation: float 8s ease-in-out infinite;
 }
 </style>

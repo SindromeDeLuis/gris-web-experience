@@ -31,11 +31,11 @@
 
 <script setup>
 const stores = [
-  { name: 'Steam', subtitle: 'PC • Mac • Linux', icon: '/images/icons/steam.svg', url: '#' },
-  { name: 'Nintendo Shop', subtitle: 'Nintendo Switch', icon: '/images/icons/switch.svg', url: '#' },
-  { name: 'PlayStation', subtitle: 'PlayStation 4 • PlayStation 5', icon: '/images/icons/ps.svg', url: '#' },
-  { name: 'Xbox', subtitle: 'Xbox One • Xbox Series X/S', icon: '/images/icons/xbox.svg', url: '#' },
-  { name: 'App Store', subtitle: 'iPhone • iPad', icon: '/images/icons/apple.svg', url: '#' },
+  { name: 'Steam', subtitle: 'PC • Mac • Linux', icon: '/images/icons/steam.svg', url: 'https://store.steampowered.com/app/683320/GRIS/' },
+  { name: 'Nintendo Shop', subtitle: 'Nintendo Switch', icon: '/images/icons/switch.svg', url: 'https://www.nintendo.com/games/detail/gris-switch/' },
+  { name: 'PlayStation', subtitle: 'PlayStation 4 • PlayStation 5', icon: '/images/icons/ps.svg', url: 'https://www.playstation.com/games/gris/' },
+  { name: 'Xbox', subtitle: 'Xbox One • Xbox Series X/S', icon: '/images/icons/xbox.svg', url: 'https://www.xbox.com/en-us/games/store/gris/9n6c6j7c3gtq' },
+  { name: 'App Store', subtitle: 'iPhone • iPad', icon: '/images/icons/apple.svg', url: 'https://apps.apple.com/us/app/gris/id1445379072' },
   { name: 'Google Play Store', subtitle: 'Android', icon: '/images/icons/google-play.svg', url: '#' },
 ]
 </script>

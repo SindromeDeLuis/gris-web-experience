@@ -1,9 +1,7 @@
 <script setup>
 import { onMounted, ref, onUnmounted } from 'vue';
 import gsap from 'gsap';
-
-const shadowRef = ref(null);
-const containerRef = ref(null);
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const features = [
   { title: 'Sin Diálogos', desc: 'Narrativa puramente visual que trasciende el lenguaje.', color: "lg:text-white" },
@@ -11,15 +9,18 @@ const features = [
   { title: 'Arte a Mano', desc: 'Cada frame es una acuarela pintada con delicadeza.', color: "text-black/90" }
 ];
 
-// Lógica de la Sombra que te imita
+gsap.registerPlugin(ScrollTrigger);
+
+const shadowRef = ref(null);
+const containerRef = ref(null);
+
 const handleMouseMove = (e) => {
   const { clientX, clientY } = e;
 
-  // La sombra sigue al ratón con un suavizado (GSAP lo hace fácil)
   gsap.to(shadowRef.value, {
     x: clientX - 50,
     y: clientY - 50,
-    duration: 1.5, // El retraso le da el toque "fantasmagórico"
+    duration: 1.5,
     ease: "power2.out"
   });
 };

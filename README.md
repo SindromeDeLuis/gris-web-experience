@@ -1,44 +1,65 @@
-# gris-web-experience
+# GRIS Web Experience
 
-This template should help get you started developing with Vue 3 in Vite.
+Proyecto de experiencia web inspirada en la estética y narrativa de GRIS, desarrollado con Vue 3 y Vite. La aplicación presenta una landing page con navegación por secciones, animaciones suaves, diseño visual cinematográfico y contenido temático de historia, arte, música, gameplay y tiendas.
 
-## Recommended IDE Setup
+## Objetivo del proyecto
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Crear una experiencia digital immersive para presentar la obra de GRIS a través de una estructura de SPA con enfoque visual y narrativa. El sitio incluye:
 
-## Recommended Browser Setup
+- Portada principal con identidad visual evocadora
+- Sección de historia y contexto creativo
+- Galería y contenido de arte visual
+- Espacio para música y atmósfera sonora
+- Presentación de gameplay y mecánicas
+- Enlaces a puntos de compra y plataformas
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Stack tecnológico
 
-## Customize configuration
+- Vue 3
+- Vite
+- Vue Router
+- GSAP para animaciones
+- Lenis para scroll suave
+- Tailwind CSS
+- Pinia
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Requisitos
 
-## Project Setup
+- Node.js 20.19+ o 22.12+
+- npm
 
-```sh
+## Instalación
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Scripts disponibles
 
-```sh
+### Desarrollo
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+Inicia el entorno de desarrollo con hot reload.
 
-```sh
+### Compilación para producción
+
+```bash
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Genera la versión optimizada para despliegue.
 
-```sh
-npm run lint
+### Vista previa de producción
+
+```bash
+npm run preview
 ```
+
+## Créditos
+
+- Laura Sandoval — diseño de la web y creación de las imágenes
+  - Instagram: https://www.instagram.com/lalu.dg
+  

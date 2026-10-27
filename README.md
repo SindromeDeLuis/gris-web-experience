@@ -21,7 +21,6 @@ Crear una experiencia digital immersive para presentar la obra de GRIS a través
 - GSAP para animaciones
 - Lenis para scroll suave
 - Tailwind CSS
-- Pinia
 
 ## Requisitos
 
